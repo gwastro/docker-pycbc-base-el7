@@ -59,4 +59,4 @@ RUN source ~/pycbc-software/bin/activate ; \
         pip install ipython jupyter ; \
         deactivate
 
-RUN echo 'source ${HOME}/pycbc-software/bin/activate' >> ~/.bash_profile
+RUN echo 'source ${HOME}/pycbc-software/bin/activate' >> ~/.bashrc
