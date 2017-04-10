@@ -54,7 +54,6 @@ RUN source ~/pycbc-software/bin/activate ; \
         pip install http://download.pegasus.isi.edu/pegasus/4.7.4/pegasus-python-source-4.7.4.tar.gz ; \
         pip install dqsegdb ; \
         pip install 'matplotlib==1.5.3' ; \
-        pip install pycbc-pylal ; \
         pip install "Sphinx>=1.4.2" numpydoc sphinx-rtd-theme ; \
         pip install "git+https://github.com/ligo-cbc/sphinxcontrib-programoutput.git#egg=sphinxcontrib-programoutput" ; \
         pip install ipython jupyter ; \
