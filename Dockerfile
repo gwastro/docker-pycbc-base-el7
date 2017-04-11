@@ -59,4 +59,11 @@ RUN source ~/pycbc-software/bin/activate ; \
         pip install ipython jupyter ; \
         deactivate
 
-RUN echo 'source ${HOME}/pycbc-software/bin/activate' >> ~/.bashrc
+RUN echo 'source ${HOME}/pycbc-software/bin/activate' >> ~/.bash_profile
+
+USER root
+RUN yum -y install openssh-server
+EXPOSE 22
+ADD pycbc-sshd /usr/bin/pycbc-sshd
+RUN chmod +x /usr/bin/pycbc-sshd
+RUN mkdir -p /var/run/sshd
