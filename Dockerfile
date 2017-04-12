@@ -1,4 +1,4 @@
-FROM pycbc/ldg-el7
+FROM pycbc/ldg-el7:v1.0
 
 # remove the LDG lal installation
 RUN yum -y remove "*lal*"
@@ -67,3 +67,5 @@ EXPOSE 22
 ADD pycbc-sshd /usr/bin/pycbc-sshd
 RUN chmod +x /usr/bin/pycbc-sshd
 RUN mkdir -p /var/run/sshd
+
+RUN yum -y install man-db
