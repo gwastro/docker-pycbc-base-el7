@@ -8,6 +8,6 @@ do
   fi
 done
 
-/usr/sbin/sshd -D
+/usr/sbin/sshd
 
 exit 0
