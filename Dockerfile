@@ -1,7 +1,33 @@
-FROM pycbc/ldg-el7:v1.0
+FROM ligo/lalsuite-dev:el7
 
-# remove the LDG lal installation
-RUN yum -y remove "*lal*"
+# install additional repositories
+RUN curl http://download.pegasus.isi.edu/wms/download/rhel/7/pegasus.repo > /etc/yum.repos.d/pegasus.repo
+RUN rpm -Uvh https://repo.grid.iu.edu/osg/3.3/osg-3.3-el7-release-latest.rpm
+RUN curl http://htcondor.org/yum/RPM-GPG-KEY-HTCondor > /tmp/RPM-GPG-KEY-HTCondor
+RUN rpm --import /tmp/RPM-GPG-KEY-HTCondor
+RUN curl http://htcondor.org/yum/repo.d/htcondor-stable-rhel7.repo > /etc/yum.repos.d/htcondor-stable-rhel7.repo
+
+# clean rpm cache
+RUN yum clean all
+RUN yum makecache
+
+# install extra software
+RUN yum -y install wget
+RUN yum -y install git2u-all
+RUN yum install -y zlib-devel libpng-devel libjpeg-devel libsqlite3-dev sqlite-devel db4-devel
+RUN yum -y install tkinter libpng-devel lynx telnet
+RUN yum -y install compat-glibc compat-glibc-headers
+RUN yum -y install gd-devel audit-libs-devel libcap-devel nss-devel
+RUN yum -y install xmlto asciidoc hmaccalc newt-devel 'perl(ExtUtils::Embed)' pesign elfutils-devel binutils-devel numactl-devel pciutils-devel
+RUN yum -y install dejagnu sharutils gcc-gnat libgnat dblatex gmp-devel mpfr-devel libmpc-devel
+RUN yum -y install libuuid-devel netpbm-progs nasm
+RUN yum -y install libstdc++-static
+RUN yum -y install gettext-devel avahi-devel dyninst-devel crash-devel latex2html emacs libvirt-devel
+RUN yum -y install xmlto-tex patch
+RUN yum -y install ant asciidoc xsltproc fop docbook-style-xsl.noarch
+RUN yum -y install vim-enhanced
+RUN yum install -y globus-gsi-cert-utils-progs gsi-openssh-clients osg-ca-certs ligo-proxy-utils
+RUN yum -y install condor condor-classads condor-python condor-procd condor-external-libs
 
 # create a regular user account and switch to it
 RUN useradd -ms /bin/bash pycbc
