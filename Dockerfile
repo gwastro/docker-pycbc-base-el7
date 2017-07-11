@@ -1,4 +1,4 @@
-FROM pycbc/ldg-el7:v1.0
+FROM pycbc/ldg-el7:v1.1
 
 # remove the LDG lal installation
 RUN yum -y remove "*lal*"
