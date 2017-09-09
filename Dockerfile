@@ -4,7 +4,7 @@ USER root
 
 # set up additional repositories
 RUN yum -y install curl
-curl http://download.pegasus.isi.edu/wms/download/rhel/7/pegasus.repo > /etc/yum.repos.d/pegasus.repo
+RUN curl http://download.pegasus.isi.edu/wms/download/rhel/7/pegasus.repo > /etc/yum.repos.d/pegasus.repo
 RUN rpm -Uvh https://repo.grid.iu.edu/osg/3.3/osg-3.3-el7-release-latest.rpm
 RUN wget http://htcondor.org/yum/RPM-GPG-KEY-HTCondor
 RUN rpm --import RPM-GPG-KEY-HTCondor
