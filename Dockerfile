@@ -4,12 +4,11 @@ USER root
 
 # set up additional repositories
 RUN yum -y install curl
-RUN curl http://download.pegasus.isi.edu/wms/download/rhel/7/pegasus.repo > /etc/yum.repos.d/pegasus.repo
-RUN rpm -Uvh https://repo.grid.iu.edu/osg/3.3/osg-3.3-el7-release-latest.rpm
-RUN wget http://htcondor.org/yum/RPM-GPG-KEY-HTCondor
+RUN curl -L http://download.pegasus.isi.edu/wms/download/rhel/7/pegasus.repo > /etc/yum.repos.d/pegasus.repo
+RUN curl -L http://htcondor.org/yum/RPM-GPG-KEY-HTCondor > RPM-GPG-KEY-HTCondor
 RUN rpm --import RPM-GPG-KEY-HTCondor
 RUN rm -f RPM-GPG-KEY-HTCondor
-RUN curl http://htcondor.org/yum/repo.d/htcondor-stable-rhel7.repo > /etc/yum.repos.d/htcondor-stable-rhel7.repo
+RUN curl -L http://htcondor.org/yum/repo.d/htcondor-stable-rhel7.repo > /etc/yum.repos.d/htcondor-stable-rhel7.repo
 
 # clean up yum and update installed packages
 RUN yum clean all
@@ -18,7 +17,7 @@ RUN yum -y update
 
 # install pycbc docker container software
 RUN yum -y install python2-pip python-setuptools
-RUN yum -y install git2u-all lscsoft-all
+RUN yum -y install git2u-all lscsoft-external-cbc
 RUN yum -y install zlib-devel libpng-devel libjpeg-devel libsqlite3-dev sqlite-devel db4-devel openssl-devel
 RUN yum -y install hdf5-static libxml2-static zlib-static libstdc++-static cfitsio-static glibc-static fftw-static gsl-static openssl-static
 RUN yum -y install tkinter libpng-devel lynx telnet wget
@@ -34,6 +33,7 @@ RUN yum -y install vim-enhanced man-db
 RUN yum -y install globus-gsi-cert-utils-progs gsi-openssh-clients osg-ca-certs ligo-proxy-utils ecp-cookie-init
 RUN yum -y install condor condor-classads condor-python condor-procd condor-external-libs
 RUN yum -y install pegasus
+RUN yum -y install lscsoft-all
 
 # set up sshd inside the docker container
 RUN yum -y install openssh-server
@@ -46,7 +46,8 @@ RUN mkdir -p /var/run/sshd
 RUN yum -y remove "*lal*"
 
 # create a regular user account and switch to it
-RUN useradd -ms /bin/bash pycbc
+RUN groupadd -g 1000 pycbc
+RUN useradd -u 1000 -g 1000 -ms /bin/bash pycbc
 USER pycbc
 WORKDIR /home/pycbc
 RUN cp -R /etc/skel/.??* ~
