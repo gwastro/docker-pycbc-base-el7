@@ -10,8 +10,11 @@ View on [Docker Hub](https://hub.docker.com/r/pycbc/pycbc-base-el7/)
 To build this container, run the commands
 
 ```
+docker login
 docker build -t pycbc/pycbc-base-el7:latest https://github.com/gwastro/docker-pycbc-base-el7.git
 docker tag pycbc/pycbc-base-el7 pycbc/pycbc-base-el7:v1.7-8cbd1b7
 docker push pycbc/pycbc-base-el7:v1.7-8cbd1b7
 docker push pycbc/pycbc-base-el7:latest
 ```
+
+PyCBC derives from this container via its [Dockerfile](https://github.com/gwastro/pycbc/blob/master/Dockerfile) so if a new pycbc-base-el7 image is pushed to Docker Hub, then that file needs to be updated to use the new tag.
