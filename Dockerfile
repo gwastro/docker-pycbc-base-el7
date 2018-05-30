@@ -91,7 +91,7 @@ RUN source ~/pycbc-software/bin/activate ; \
       deactivate
 
 RUN source ~/pycbc-software/bin/activate ; \
-        pip install http://download.pegasus.isi.edu/pegasus/4.7.4/pegasus-python-source-4.7.4.tar.gz ; \
+        pip install http://download.pegasus.isi.edu/pegasus/4.8.2/pegasus-python-source-4.8.2.tar.gz ; \
         pip install dqsegdb ; \
         pip install "Sphinx>=1.4.2" numpydoc sphinx-rtd-theme ; \
         pip install "git+https://github.com/ligo-cbc/sphinxcontrib-programoutput.git#egg=sphinxcontrib-programoutput" ; \
