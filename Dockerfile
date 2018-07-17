@@ -68,7 +68,7 @@ RUN source ~/pycbc-software/bin/activate ; \
       cd ~/src ; \
       git clone https://git.ligo.org/lscsoft/lalsuite.git ; \
       cd ~/src/lalsuite ; \
-      git checkout 0231cca7eb1af128de63a8d22a27ccc5099f4c7b; \
+      git checkout 89a30fcf86f5d23455303e32051a87b0e3c3084a; \
       ./00boot ; \
       ./configure --prefix=${VIRTUAL_ENV}/opt/lalsuite --enable-swig-python \
         --disable-lalstochastic --disable-lalxml --disable-lalinference \
