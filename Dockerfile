@@ -46,8 +46,8 @@ RUN mkdir -p /var/run/sshd
 RUN yum -y remove "*lal*"
 
 # set up environment
-RUN echo 'source ${HOME}/pycbc-software/bin/activate' > /etc/profile.d/pycbc.sh
-RUN echo 'source ${HOME}/pycbc-software/bin/activate.csh' > /etc/profile.d/pycbc.csh
+RUN echo 'source /opt/pycbc/pycbc-software/bin/activate' > /etc/profile.d/pycbc.sh
+RUN echo 'source /opt/pycbc/pycbc-software/bin/activate.csh' > /etc/profile.d/pycbc.csh
 RUN echo 'export LAL_DATA_PATH=/opt/pycbc/pycbc-software/share/lal-data/' >> /etc/profile.d/pycbc.sh
 RUN echo 'setenv LAL_DATA_PATH /opt/pycbc/pycbc-software/share/lal-data/' >> /etc/profile.d/pycbc.csh
 
@@ -59,7 +59,7 @@ WORKDIR /opt/pycbc
 
 RUN pip install virtualenv
 RUN virtualenv pycbc-software ; \
-      source ~/pycbc-software/bin/activate ; \
+      source /opt/pycbc/pycbc-software/bin/activate ; \
       pip install --upgrade pip ; \
       pip install six packaging appdirs ; \
       pip install --upgrade setuptools ; \
@@ -68,7 +68,7 @@ RUN virtualenv pycbc-software ; \
       SWIG_FEATURES="-cpperraswarn -includeall -I/usr/include/openssl" pip install M2Crypto ; \
       deactivate
 
-RUN source ~/pycbc-software/bin/activate ; \
+RUN source /opt/pycbc/pycbc-software/bin/activate ; \
       mkdir -p ~/src ; \
       cd ~/src ; \
       git clone https://git.ligo.org/lscsoft/lalsuite.git ; \
@@ -82,7 +82,7 @@ RUN source ~/pycbc-software/bin/activate ; \
       echo 'source ${VIRTUAL_ENV}/opt/lalsuite/etc/lalsuite-user-env.sh' >> ${VIRTUAL_ENV}/bin/activate ; \
       deactivate
 
-RUN source ~/pycbc-software/bin/activate ; \
+RUN source /opt/pycbc/pycbc-software/bin/activate ; \
       cd ~/src/lalsuite/lalapps ; \
       LIBS="-lhdf5_hl -lhdf5 -lcrypto -lssl -ldl -lz -lstdc++" ./configure --prefix=${VIRTUAL_ENV}/opt/lalsuite \
          --enable-static-binaries --disable-lalinference \
@@ -95,7 +95,7 @@ RUN source ~/pycbc-software/bin/activate ; \
       cp lalapps_inspinj $VIRTUAL_ENV/bin ; \
       deactivate
 
-RUN source ~/pycbc-software/bin/activate ; \
+RUN source /opt/pycbc/pycbc-software/bin/activate ; \
         pip install http://download.pegasus.isi.edu/pegasus/4.8.2/pegasus-python-source-4.8.2.tar.gz ; \
         pip install dqsegdb ; \
         pip install "Sphinx>=1.4.2" numpydoc sphinx-rtd-theme ; \
