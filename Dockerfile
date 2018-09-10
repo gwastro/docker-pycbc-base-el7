@@ -45,6 +45,12 @@ RUN mkdir -p /var/run/sshd
 # remove the LDG lal installation
 RUN yum -y remove "*lal*"
 
+# set up environment
+RUN echo 'source ${HOME}/pycbc-software/bin/activate' > /etc/profile.d/pycbc.sh
+RUN echo 'source ${HOME}/pycbc-software/bin/activate.csh' > /etc/profile.d/pycbc.csh
+RUN echo 'export LAL_DATA_PATH=/opt/pycbc/pycbc-software/share/lal-data/' >> /etc/profile.d/pycbc.sh
+RUN echo 'setenv LAL_DATA_PATH /opt/pycbc/pycbc-software/share/lal-data/' >> /etc/profile.d/pycbc.csh
+
 # create a regular user account and switch to it
 RUN groupadd -g 1000 pycbc
 RUN useradd -u 1000 -g 1000 -k /etc/skel -d /opt/pycbc -m -s /bin/bash pycbc
@@ -99,5 +105,3 @@ RUN source ~/pycbc-software/bin/activate ; \
         jupyter nbextension enable --sys-prefix --py hide_code; \
         jupyter serverextension enable --sys-prefix --py hide_code; \
         deactivate
-
-RUN echo 'source ${HOME}/pycbc-software/bin/activate' >> ~/.bash_profile
