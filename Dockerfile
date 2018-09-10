@@ -105,3 +105,5 @@ RUN source ~/pycbc-software/bin/activate ; \
         jupyter nbextension enable --sys-prefix --py hide_code; \
         jupyter serverextension enable --sys-prefix --py hide_code; \
         deactivate
+
+RUN chmod go+rwx /opt/pycbc
