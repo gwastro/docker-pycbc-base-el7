@@ -7,12 +7,14 @@ It is based on the [LIGO LALSuite Development EL7 container](https://hub.docker.
 
 View on [Docker Hub](https://hub.docker.com/r/pycbc/pycbc-base-el7/)
 
-To build this container, run the commands
+To build this container, run the commands (changing TAG as appropriate):
 
-```
+```shell
+TAG="v1.8-89a30fc"
 docker login
-docker build -t pycbc/pycbc-base-el7:v1.8-89a30fc https://github.com/gwastro/docker-pycbc-base-el7.git#v1.8-89a30fc
-docker push pycbc/pycbc-base-el7:v1.8-89a30fc
+docker build -t pycbc/pycbc-base-el7:${TAG} https://github.com/gwastro/docker-pycbc-base-el7.git#${TAG}
+docker push pycbc/pycbc-base-el7:${TAG}
+docker tag pycbc/pycbc-base-el7:${TAG} pycbc/pycbc-base-el7:latest
 docker push pycbc/pycbc-base-el7:latest
 ```
 
