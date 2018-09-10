@@ -11,7 +11,7 @@ To build this container, run the commands
 
 ```
 docker login
-docker build -t pycbc/pycbc-base-el7:latest https://github.com/gwastro/docker-pycbc-base-el7.git
+docker build -t pycbc/pycbc-base-el7:latest https://github.com/gwastro/docker-pycbc-base-el7.git#v1.8-89a30fc
 docker tag pycbc/pycbc-base-el7 pycbc/pycbc-base-el7:v1.8-89a30fc
 docker push pycbc/pycbc-base-el7:v1.8-89a30fc
 docker push pycbc/pycbc-base-el7:latest
