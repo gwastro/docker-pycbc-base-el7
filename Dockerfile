@@ -47,10 +47,9 @@ RUN yum -y remove "*lal*"
 
 # create a regular user account and switch to it
 RUN groupadd -g 1000 pycbc
-RUN useradd -u 1000 -g 1000 -ms /bin/bash pycbc
+RUN useradd -u 1000 -g 1000 -k /etc/skel -d /opt/pycbc -m -s /bin/bash pycbc
 USER pycbc
-WORKDIR /home/pycbc
-RUN cp -R /etc/skel/.??* ~
+WORKDIR /opt/pycbc
 
 RUN pip install virtualenv
 RUN virtualenv pycbc-software ; \
