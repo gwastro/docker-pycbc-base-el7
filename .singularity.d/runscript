@@ -14,4 +14,4 @@ if [ "x$LAL_DATA_PATH" == "x" ]; then
     export LAL_DATA_PATH="/opt/pycbc/pycbc-software/opt/lalsuite/share/lalsimulation"
 fi
 
-exec "$0" "$@"
+exec "$@"
