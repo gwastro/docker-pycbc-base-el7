@@ -4,5 +4,5 @@ if [ -f /opt/pycbc/pycbc-software/bin/activate ] ; then
 fi
 
 # Use the lal-data bundled in the image
-LAL_DATA_PATH=/opt/pycbc/pycbc-software/share/lal-data
+LAL_DATA_PATH=/opt/pycbc/pycbc-software/opt/lalsuite/share/lalsimulation
 export LAL_DATA_PATH
