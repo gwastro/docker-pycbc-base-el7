@@ -1,1 +1,3 @@
+#!/bin/bash
+
 pycbc_inspiral --version
