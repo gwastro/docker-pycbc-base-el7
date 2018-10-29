@@ -46,10 +46,16 @@ RUN mkdir -p /var/run/sshd
 RUN yum -y remove "*lal*"
 
 # set up environment
-RUN echo 'source /opt/pycbc/pycbc-software/bin/activate' > /etc/profile.d/pycbc.sh
-RUN echo 'source /opt/pycbc/pycbc-software/bin/activate.csh' > /etc/profile.d/pycbc.csh
-RUN echo 'export LAL_DATA_PATH=/opt/pycbc/pycbc-software/share/lal-data/' >> /etc/profile.d/pycbc.sh
-RUN echo 'setenv LAL_DATA_PATH /opt/pycbc/pycbc-software/share/lal-data/' >> /etc/profile.d/pycbc.csh
+ADD etc/profile.d/pycbc.sh /etc/profile.d/pycbc.sh
+ADD etc/profile.d/pycbc.csh /etc/profile.d/pycbc.csh
+
+# some extra singularity stuff
+COPY .singularity.d /.singularity.d
+RUN cd / && \
+    ln -s .singularity.d/actions/exec .exec && \
+    ln -s .singularity.d/actions/run .run && \
+    ln -s .singularity.d/actions/test .shell && \
+    ln -s .singularity.d/runscript singularity
 
 # create a regular user account and switch to it
 RUN groupadd -g 1000 pycbc
