@@ -34,7 +34,8 @@ RUN yum -y install globus-gsi-cert-utils-progs gsi-openssh-clients osg-ca-certs 
 RUN yum -y install condor condor-classads condor-python condor-procd condor-external-libs
 RUN yum -y install pegasus
 RUN yum -y install lscsoft-all
-RUN yum -y install xrootd-client xrootd-client-libs gfal2-util globus-gass-copy-progs gfal2-plugin-xrootd
+RUN yum -y install xrootd-client xrootd-client-libs globus-gass-copy-progs
+RUN yum -y install gfal2 gfal2-plugin-file gfal2-plugin-gridftp gfal2-util gfal2-python gfal2-plugin-srm gfal2-plugin-xrootd
 
 # set up sshd inside the docker container
 RUN yum -y install openssh-server
