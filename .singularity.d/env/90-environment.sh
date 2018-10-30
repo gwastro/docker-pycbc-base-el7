@@ -2,8 +2,9 @@
 
 # Deactivate any existing virtual environment
 if [ x"$VIRTUAL_ENV" != "x" ]; then
-   echo "WARNING: Already in virtual environment, deactivating $VIRTUAL_ENV"
-   deactivate
+   echo "WARNING: Entering PyCBC singularity container with VIRTUAL_ENV set."
+   echo "WARNING:    It is reccomended that you deactivate any existing"
+   echo "WARNING:    virtual environment before starting this container."
 fi
 
 # Source the PyCBC virtual environment
