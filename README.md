@@ -19,3 +19,8 @@ docker push pycbc/pycbc-base-el7:latest
 ```
 
 PyCBC derives from this container via its [Dockerfile](https://github.com/gwastro/pycbc/blob/master/Dockerfile) so if a new pycbc-base-el7 image is pushed to Docker Hub, then that file needs to be updated to use the new tag.
+
+Intel MKL Libraries
+-------------------
+
+This Docker image contains the redistributable Intel MKL shared libraries provided under the [Intel Simplified Software License](https://software.intel.com/en-us/license/intel-simplified-software-license). The contents of /opt/intel are Copyright (c) 2018 Intel Corporation and provided under the terms of the Intel license.
