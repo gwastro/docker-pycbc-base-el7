@@ -12,7 +12,7 @@ To build this container, run the commands (changing TAG as appropriate):
 ```shell
 TAG="v2.4-89a30fc"
 docker login
-docker build -t pycbc/pycbc-base-el7:${TAG} https://github.com/gwastro/docker-pycbc-base-el7.git#${TAG}
+docker build --no-cache -t pycbc/pycbc-base-el7:${TAG} https://github.com/gwastro/docker-pycbc-base-el7.git#${TAG}
 docker push pycbc/pycbc-base-el7:${TAG}
 docker tag pycbc/pycbc-base-el7:${TAG} pycbc/pycbc-base-el7:latest
 docker push pycbc/pycbc-base-el7:latest
