@@ -7,7 +7,7 @@ if [ "x${SINGULARITY_CONTAINER}" == "x" ] ; then
     fi
 
     # Use the lal-data bundled in the image if not set
-    if [ "x${LAL_DATA_PATH}" == "x" ]
+    if [ "x${LAL_DATA_PATH}" == "x" ] ; then
         LAL_DATA_PATH=/opt/pycbc/pycbc-software/opt/lalsuite/share/lalsimulation
         export LAL_DATA_PATH
     fi
