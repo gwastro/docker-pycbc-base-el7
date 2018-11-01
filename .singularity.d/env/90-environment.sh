@@ -21,8 +21,8 @@ fi
 
 # Add path to Intel MKL Libraries
 if [ "x$LD_LIBRARY_PATH" == "x" ]; then
-    LD_LIBRARY_PATH="/opt/intel/composer_xe_2015.0.090/compiler/lib/intel64"
+    LD_LIBRARY_PATH="/opt/intel/composer_xe_2015.0.090/mkl/lib/intel64"
 else
-    LD_LIBRARY_PATH="/opt/intel/composer_xe_2015.0.090/compiler/lib/intel64:${LD_LIBRARY_PATH}"
+    LD_LIBRARY_PATH="/opt/intel/composer_xe_2015.0.090/mkl/lib/intel64:${LD_LIBRARY_PATH}"
 fi
 export LD_LIBRARY_PATH
