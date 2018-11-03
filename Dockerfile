@@ -86,30 +86,7 @@ RUN virtualenv pycbc-software ; \
       deactivate
 
 RUN source /opt/pycbc/pycbc-software/bin/activate ; \
-      mkdir -p ~/src ; \
-      cd ~/src ; \
-      git clone https://git.ligo.org/lscsoft/lalsuite.git ; \
-      cd ~/src/lalsuite ; \
-      git checkout 89a30fcf86f5d23455303e32051a87b0e3c3084a; \
-      ./00boot ; \
-      ./configure --prefix=${VIRTUAL_ENV}/opt/lalsuite --enable-swig-python \
-        --disable-lalstochastic --disable-lalxml --disable-lalinference \
-        --disable-laldetchar --disable-lalapps 2>&1 | grep -v checking ; \
-      make install ; \
-      echo 'source ${VIRTUAL_ENV}/opt/lalsuite/etc/lalsuite-user-env.sh' >> ${VIRTUAL_ENV}/bin/activate ; \
-      deactivate
-
-RUN source /opt/pycbc/pycbc-software/bin/activate ; \
-      cd ~/src/lalsuite/lalapps ; \
-      LIBS="-lhdf5_hl -lhdf5 -lcrypto -lssl -ldl -lz -lstdc++" ./configure --prefix=${VIRTUAL_ENV}/opt/lalsuite \
-         --enable-static-binaries --disable-lalinference \
-         --disable-lalburst --disable-lalpulsar \
-         --disable-lalstochastic ; \
-      cd ~/src/lalsuite/lalapps/src/lalapps ; \
-      make ; \
-      cd ~/src/lalsuite/lalapps/src/inspiral ;\
-      make lalapps_inspinj ; \
-      cp lalapps_inspinj $VIRTUAL_ENV/bin ; \
+      pip install lalsuite==6.48.1.dev20180717 ; \
       deactivate
 
 RUN source /opt/pycbc/pycbc-software/bin/activate ; \
