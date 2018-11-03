@@ -78,10 +78,7 @@ RUN pip install virtualenv
 RUN virtualenv pycbc-software ; \
       source /opt/pycbc/pycbc-software/bin/activate ; \
       pip install --upgrade pip ; \
-      pip install six packaging appdirs ; \
       pip install --upgrade setuptools ; \
-      pip install "numpy>=1.6.4" "h5py>=2.5" unittest2 python-cjson Cython decorator ; \
-      pip install "scipy>=0.13.0" ; \
       SWIG_FEATURES="-cpperraswarn -includeall -I/usr/include/openssl" pip install M2Crypto ; \
       deactivate
 
@@ -90,10 +87,6 @@ RUN source /opt/pycbc/pycbc-software/bin/activate ; \
       deactivate
 
 RUN source /opt/pycbc/pycbc-software/bin/activate ; \
-        pip install http://download.pegasus.isi.edu/pegasus/4.8.2/pegasus-python-source-4.8.2.tar.gz ; \
-        pip install dqsegdb ; \
-        pip install "Sphinx>=1.4.2" numpydoc sphinx-rtd-theme ; \
-        pip install "git+https://github.com/ligo-cbc/sphinxcontrib-programoutput.git#egg=sphinxcontrib-programoutput" ; \
         pip install ipython jupyter hide_code; \
         jupyter nbextension install --sys-prefix --py hide_code; \
         jupyter nbextension enable --sys-prefix --py hide_code; \
