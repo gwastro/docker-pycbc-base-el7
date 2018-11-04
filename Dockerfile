@@ -68,6 +68,14 @@ RUN chmod go+rx /opt/intel/composer_xe_2015.0.090/mkl/lib/intel64/*.so
 RUN chmod go+r /opt/intel/composer_xe_2015.0.090/mkl/lib/intel64/intel-simplified-software-license.html
 RUN rm -f /tmp/composer_xe_2015.0.090.tar.gz
 
+# install stashcahe
+RUN mkdir -p /etc/stashcache
+RUN curl -L https://raw.githubusercontent.com/opensciencegrid/StashCache/master/bin/caches.json > /etc/stashcache/caches.json
+RUN curl -L https://raw.githubusercontent.com/opensciencegrid/StashCache/master/bin/stashcp > /usr/bin/stashcp
+RUN chmod go+rx /etc/stashcache
+RUN chmod go+r /etc/stashcache/caches.json
+RUN chmod go+rx /usr/bin/stashcp
+
 # create a regular user account and switch to it
 RUN groupadd -g 1000 pycbc
 RUN useradd -u 1000 -g 1000 -k /etc/skel -d /opt/pycbc -m -s /bin/bash pycbc
