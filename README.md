@@ -10,7 +10,7 @@ View on [Docker Hub](https://hub.docker.com/r/pycbc/pycbc-base-el7/)
 To build this container, run the commands (changing TAG as appropriate):
 
 ```shell
-TAG="v3.0-89a30fc"
+TAG="v3.1-89a30fc"
 docker login
 docker build --no-cache -t pycbc/pycbc-base-el7:${TAG} https://github.com/gwastro/docker-pycbc-base-el7.git#${TAG}
 docker push pycbc/pycbc-base-el7:${TAG}
