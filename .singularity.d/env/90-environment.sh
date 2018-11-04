@@ -26,14 +26,3 @@ else
     LD_LIBRARY_PATH="/opt/intel/composer_xe_2015.0.090/mkl/lib/intel64:${LD_LIBRARY_PATH}"
 fi
 export LD_LIBRARY_PATH
-
-# Set up OSG Connect modules
-if [ -d /cvmfs/connect.opensciencegrid.org/modules ] ; then
-  if [ -e $(/cvmfs/connect.opensciencegrid.org/modules/spack/bin/spack location -i lmod)/lmod/lmod/init/bash ]; then
-    . $(/cvmfs/connect.opensciencegrid.org/modules/spack/bin/spack location -i lmod)/lmod/lmod/init/bash
-    . /cvmfs/connect.opensciencegrid.org/modules/spack/share/spack/setup-env.sh
-    
-  # load stashcp
-  module load stashcache/5.1.2-py2.7
-  fi
-fi
