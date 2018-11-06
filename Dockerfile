@@ -71,10 +71,10 @@ RUN rm -f /tmp/composer_xe_2015.0.090.tar.gz
 # install stashcahe
 RUN mkdir -p /etc/stashcache
 RUN curl -L https://raw.githubusercontent.com/opensciencegrid/StashCache/master/bin/caches.json > /etc/stashcache/caches.json
-RUN curl -L https://raw.githubusercontent.com/opensciencegrid/StashCache/master/bin/stashcp > /usr/bin/stashcp
+RUN curl -L https://raw.githubusercontent.com/opensciencegrid/StashCache/master/bin/stashcp > /bin/stashcp
 RUN chmod go+rx /etc/stashcache
 RUN chmod go+r /etc/stashcache/caches.json
-RUN chmod go+rx /usr/bin/stashcp
+RUN chmod go+rx /bin/stashcp
 
 # create a regular user account and switch to it
 RUN groupadd -g 1000 pycbc
