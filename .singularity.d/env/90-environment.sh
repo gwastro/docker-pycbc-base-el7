@@ -7,6 +7,16 @@ if [ x"$VIRTUAL_ENV" != "x" ]; then
    echo "WARNING:    virtual environment before starting this container."
 fi
 
+# Clear out any OSG Connect paths
+PATH="$( echo $PATH | tr : '\n' | grep -v cvmfs | paste -s -d: )"
+export PATH
+PYTHONPATH="$( echo $PYTHONPATH | tr : '\n' | grep -v cvmfs | paste -s -d: )"
+export PYTHONPATH
+unset CC CXX CPATH F90 FC
+unset GFAL_PLUGIN_DIR GLOBUS_LOCATION
+unset PERL5LIB
+unset LIBRARY_PATH
+
 # Source the PyCBC virtual environment
 if [ -f /opt/pycbc/pycbc-software/bin/activate ] ; then
   source /opt/pycbc/pycbc-software/bin/activate
